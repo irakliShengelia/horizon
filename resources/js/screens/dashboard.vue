@@ -157,80 +157,80 @@
 <template>
     <div>
         <div class="card overflow-hidden">
-            <div class="card-header d-flex align-items-center justify-content-between">
-                <h2 class="h6 m-0">Overview</h2>
+            <div class="card-header flex items-center justify-between">
+                <h2 class="text-base font-semibold m-0">Overview</h2>
             </div>
 
             <div class="card-bg-secondary">
-                <div class="d-flex">
-                    <div class="w-25">
+                <div class="flex">
+                    <div class="w-1/4">
                         <div class="p-4">
-                            <small class="text-muted fw-bold">Jobs Per Minute</small>
+                            <small class="text-muted font-bold">Jobs Per Minute</small>
 
-                            <p class="h4 mt-2 mb-0">
+                            <p class="text-2xl font-normal mt-2 mb-0">
                                 {{ stats.jobsPerMinute ? stats.jobsPerMinute.toLocaleString() : 0 }}
                             </p>
                         </div>
                     </div>
 
-                    <div class="w-25">
+                    <div class="w-1/4">
                         <div class="p-4">
-                            <small class="text-muted fw-bold" v-text="recentJobsPeriod"></small>
+                            <small class="text-muted font-bold" v-text="recentJobsPeriod"></small>
 
-                            <p class="h4 mt-2 mb-0">
+                            <p class="text-2xl font-normal mt-2 mb-0">
                                 {{ stats.recentJobs ? stats.recentJobs.toLocaleString() : 0 }}
                             </p>
                         </div>
                     </div>
 
-                    <div class="w-25">
+                    <div class="w-1/4">
                         <div class="p-4">
-                            <small class="text-muted fw-bold" v-text="failedJobsPeriod"></small>
+                            <small class="text-muted font-bold" v-text="failedJobsPeriod"></small>
 
-                            <p class="h4 mt-2 mb-0">
+                            <p class="text-2xl font-normal mt-2 mb-0">
                                 {{ stats.failedJobs ? stats.failedJobs.toLocaleString() : 0 }}
                             </p>
                         </div>
                     </div>
 
-                    <div class="w-25">
+                    <div class="w-1/4">
                         <div class="p-4">
-                            <small class="text-muted fw-bold">Status</small>
+                            <small class="text-muted font-bold">Status</small>
 
-                            <div class="d-flex align-items-center mt-2">
-                                <svg v-if="stats.status == 'running'" xmlns="http://www.w3.org/2000/svg" class="text-success" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.5rem; height: 1.5rem;">
+                            <div class="flex items-center mt-2">
+                                <svg v-if="stats.status == 'running'" xmlns="http://www.w3.org/2000/svg" class="text-emerald-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.5rem; height: 1.5rem;">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
 
-                                <svg v-if="stats.status == 'paused'" xmlns="http://www.w3.org/2000/svg" class="text-warning" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.5rem; height: 1.5rem;">
+                                <svg v-if="stats.status == 'paused'" xmlns="http://www.w3.org/2000/svg" class="text-amber-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.5rem; height: 1.5rem;">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9v6m-4.5 0V9M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
 
-                                <svg v-if="stats.status == 'inactive'" xmlns="http://www.w3.org/2000/svg" class="text-danger" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.5rem; height: 1.5rem;">
+                                <svg v-if="stats.status == 'inactive'" xmlns="http://www.w3.org/2000/svg" class="text-red-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.5rem; height: 1.5rem;">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
                                 </svg>
 
-                                <p class="h4 mb-0 ms-2">{{ {running: 'Active', paused: 'Paused', inactive: 'Inactive'}[stats.status] }}</p>
-                                <small v-if="stats.status == 'running' && stats.pausedMasters > 0" class="mb-0 ms-2">({{ stats.pausedMasters }} paused)</small>
+                                <p class="text-2xl font-normal mb-0 ml-2">{{ {running: 'Active', paused: 'Paused', inactive: 'Inactive'}[stats.status] }}</p>
+                                <small v-if="stats.status == 'running' && stats.pausedMasters > 0" class="mb-0 ml-2">({{ stats.pausedMasters }} paused)</small>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="d-flex">
-                    <div class="w-25">
+                <div class="flex">
+                    <div class="w-1/4">
                         <div class="p-4 mb-0">
-                            <small class="text-muted fw-bold">Total Processes</small>
+                            <small class="text-muted font-bold">Total Processes</small>
 
-                            <p class="h4 mt-2">
+                            <p class="text-2xl font-normal mt-2">
                                 {{ stats.processes ? stats.processes.toLocaleString() : 0 }}
                             </p>
                         </div>
                     </div>
 
-                    <div class="w-25">
+                    <div class="w-1/4">
                         <div class="p-4 mb-0">
-                            <small class="text-muted fw-bold">Max Wait Time</small>
+                            <small class="text-muted font-bold">Max Wait Time</small>
 
                             <p class="mt-2 mb-0">
                                 {{ stats.max_wait_time ? humanTime(stats.max_wait_time) : '-' }}
@@ -240,21 +240,21 @@
                         </div>
                     </div>
 
-                    <div class="w-25">
+                    <div class="w-1/4">
                         <div class="p-4 mb-0">
-                            <small class="text-muted fw-bold">Max Runtime</small>
+                            <small class="text-muted font-bold">Max Runtime</small>
 
-                            <p class="h4 mt-2">
+                            <p class="text-2xl font-normal mt-2">
                                 {{ stats.queueWithMaxRuntime ? stats.queueWithMaxRuntime : '-' }}
                             </p>
                         </div>
                     </div>
 
-                    <div class="w-25">
+                    <div class="w-1/4">
                         <div class="p-4 mb-0">
-                            <small class="text-muted fw-bold">Max Throughput</small>
+                            <small class="text-muted font-bold">Max Throughput</small>
 
-                            <p class="h4 mt-2">
+                            <p class="text-2xl font-normal mt-2">
                                 {{ stats.queueWithMaxThroughput ? stats.queueWithMaxThroughput : '-' }}
                             </p>
                         </div>
@@ -264,29 +264,29 @@
         </div>
 
         <div class="card overflow-hidden mt-4" v-if="workload.length">
-            <div class="card-header d-flex align-items-center justify-content-between">
-                <h2 class="h6 m-0">Current Workload</h2>
+            <div class="card-header flex items-center justify-between">
+                <h2 class="text-base font-semibold m-0">Current Workload</h2>
             </div>
 
             <table class="table table-hover mb-0">
                 <thead>
                 <tr>
                     <th>Queue</th>
-                    <th class="text-end" style="width: 120px;">Jobs</th>
-                    <th class="text-end" style="width: 120px;">Processes</th>
-                    <th class="text-end" style="width: 180px;">Wait</th>
+                    <th class="text-right" style="width: 120px;">Jobs</th>
+                    <th class="text-right" style="width: 120px;">Processes</th>
+                    <th class="text-right" style="width: 180px;">Wait</th>
                 </tr>
                 </thead>
 
                 <tbody>
                     <template v-for="queue in workload">
                         <tr>
-                            <td :class="{ 'fw-bold': queue.split_queues }">
+                            <td :class="{ 'font-bold': queue.split_queues }">
                                 <span>{{ queue.name.replace(/,/g, ', ') }}</span>
                             </td>
-                            <td class="text-end text-muted" :class="{ 'fw-bold': queue.split_queues }">{{ queue.length ? queue.length.toLocaleString() : 0 }}</td>
-                            <td class="text-end text-muted" :class="{ 'fw-bold': queue.split_queues }">{{ queue.processes ? queue.processes.toLocaleString() : 0 }}</td>
-                            <td class="text-end text-muted" :class="{ 'fw-bold': queue.split_queues }">{{ humanTime(queue.wait) }}</td>
+                            <td class="text-right text-muted" :class="{ 'font-bold': queue.split_queues }">{{ queue.length ? queue.length.toLocaleString() : 0 }}</td>
+                            <td class="text-right text-muted" :class="{ 'font-bold': queue.split_queues }">{{ queue.processes ? queue.processes.toLocaleString() : 0 }}</td>
+                            <td class="text-right text-muted" :class="{ 'font-bold': queue.split_queues }">{{ humanTime(queue.wait) }}</td>
                         </tr>
 
                         <tr v-for="split_queue in queue.split_queues">
@@ -297,9 +297,9 @@
 
                                 <span>{{ split_queue.name.replace(/,/g, ', ') }}</span>
                             </td>
-                            <td class="text-end text-muted">{{ split_queue.length ? split_queue.length.toLocaleString() : 0 }}</td>
-                            <td class="text-end text-muted">-</td>
-                            <td class="text-end text-muted">{{ humanTime(split_queue.wait) }}</td>
+                            <td class="text-right text-muted">{{ split_queue.length ? split_queue.length.toLocaleString() : 0 }}</td>
+                            <td class="text-right text-muted">-</td>
+                            <td class="text-right text-muted">{{ humanTime(split_queue.wait) }}</td>
                         </tr>
                     </template>
                 </tbody>
@@ -308,14 +308,14 @@
 
 
         <div class="card overflow-hidden mt-4" v-for="worker in workers" :key="worker.name">
-            <div class="card-header d-flex align-items-center justify-content-between">
-                <h2 class="h6 m-0">{{ worker.name }}</h2>
+            <div class="card-header flex items-center justify-between">
+                <h2 class="text-base font-semibold m-0">{{ worker.name }}</h2>
 
-                <svg v-if="worker.status == 'running'" xmlns="http://www.w3.org/2000/svg" class="text-success" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.5rem; height: 1.5rem;">
+                <svg v-if="worker.status == 'running'" xmlns="http://www.w3.org/2000/svg" class="text-emerald-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.5rem; height: 1.5rem;">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
 
-                <svg v-if="worker.status == 'paused'" xmlns="http://www.w3.org/2000/svg" class="text-warning" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.5rem; height: 1.5rem;">
+                <svg v-if="worker.status == 'paused'" xmlns="http://www.w3.org/2000/svg" class="text-amber-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.5rem; height: 1.5rem;">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9v6m-4.5 0V9M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
             </div>
@@ -325,28 +325,28 @@
                 <tr>
                     <th>Supervisor</th>
                     <th>Queues</th>
-                    <th class="text-end" style="width: 120px;">Processes</th>
-                    <th class="text-end" style="width: 180px;">Balancing</th>
+                    <th class="text-right" style="width: 120px;">Processes</th>
+                    <th class="text-right" style="width: 180px;">Balancing</th>
                 </tr>
                 </thead>
 
                 <tbody>
                 <tr v-for="supervisor in worker.supervisors">
                     <td>
-                        <svg v-if="supervisor.status == 'paused'" class="fill-warning me-1" viewBox="0 0 20 20" style="width: 1rem; height: 1rem;">
+                        <svg v-if="supervisor.status == 'paused'" class="fill-amber-500 mr-1" viewBox="0 0 20 20" style="width: 1rem; height: 1rem;">
                             <path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM7 6h2v8H7V6zm4 0h2v8h-2V6z" />
                         </svg>
-                        <svg v-if="supervisor.status == 'inactive'" class="fill-danger me-1" viewBox="0 0 20 20" style="width: 1rem; height: 1rem;">
+                        <svg v-if="supervisor.status == 'inactive'" class="fill-red-500 mr-1" viewBox="0 0 20 20" style="width: 1rem; height: 1rem;">
                             <path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm1.41-1.41A8 8 0 1 0 15.66 4.34 8 8 0 0 0 4.34 15.66zm9.9-8.49L11.41 10l2.83 2.83-1.41 1.41L10 11.41l-2.83 2.83-1.41-1.41L8.59 10 5.76 7.17l1.41-1.41L10 8.59l2.83-2.83 1.41 1.41z" />
                         </svg>
                         {{ superVisorDisplayName(supervisor.name, worker.name) }}
                     </td>
                     <td class="text-muted">{{ supervisor.options.queue.replace(/,/g, ', ') }}</td>
-                    <td class="text-end text-muted">{{ countProcesses(supervisor.processes) }}</td>
-                    <td class="text-end text-muted" v-if="supervisor.options.balance">
+                    <td class="text-right text-muted">{{ countProcesses(supervisor.processes) }}</td>
+                    <td class="text-right text-muted" v-if="supervisor.options.balance">
                         {{ supervisor.options.balance.charAt(0).toUpperCase() + supervisor.options.balance.slice(1) }}
                     </td>
-                    <td class="text-end text-muted" v-else>
+                    <td class="text-right text-muted" v-else>
                         Disabled
                     </td>
                 </tr>
