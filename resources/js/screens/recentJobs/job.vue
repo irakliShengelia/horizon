@@ -5,9 +5,9 @@
                 <h2 class="text-base font-semibold m-0" v-if="!ready">Job Preview</h2>
                 <h2 class="text-base font-semibold m-0" v-if="ready">{{job.name}}</h2>
 
-                <a data-bs-toggle="collapse" href="#collapseDetails" role="button">
-                    Collapse
-                </a>
+                <button @click="showDetails = !showDetails" class="text-sm hover:text-primary transition-colors">
+                    {{ showDetails ? 'Collapse' : 'Expand' }}
+                </button>
             </div>
 
             <div v-if="!ready" class="flex items-center justify-center card-bg-secondary p-5 bottom-radius">
@@ -18,7 +18,7 @@
                 <span>Loading...</span>
             </div>
 
-            <div class="card-body card-bg-secondary collapse show" id="collapseDetails" v-if="ready">
+            <div v-if="ready && showDetails" class="card-body card-bg-secondary">
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-2 mb-2">
                     <div class="md:col-span-2 text-muted">ID</div>
                     <div class="md:col-span-10">{{job.id}}</div>
@@ -60,12 +60,12 @@
             <div class="card-header flex items-center justify-between">
                 <h2 class="text-base font-semibold m-0">Data</h2>
 
-                <a data-bs-toggle="collapse" href="#collapseData" role="button">
-                    Collapse
-                </a>
+                <button @click="showData = !showData" class="text-sm hover:text-primary transition-colors">
+                    {{ showData ? 'Collapse' : 'Expand' }}
+                </button>
             </div>
 
-            <div class="card-body code-bg text-white collapse show" id="collapseData">
+            <div v-if="showData" class="card-body code-bg text-white">
                 <vue-json-pretty :data="prettyPrintJob(job.payload.data)"></vue-json-pretty>
             </div>
         </div>
@@ -74,12 +74,12 @@
             <div class="card-header flex items-center justify-between">
                 <h2 class="text-base font-semibold m-0">Tags</h2>
 
-                <a data-bs-toggle="collapse" href="#collapseTags" role="button">
-                    Collapse
-                </a>
+                <button @click="showTags = !showTags" class="text-sm hover:text-primary transition-colors">
+                    {{ showTags ? 'Collapse' : 'Expand' }}
+                </button>
             </div>
 
-            <div class="card-body code-bg text-white collapse show" id="collapseTags">
+            <div v-if="showTags" class="card-body code-bg text-white">
                 <vue-json-pretty :data="job.payload.tags"></vue-json-pretty>
             </div>
         </div>
@@ -99,7 +99,10 @@
         data() {
             return {
                 ready: false,
-                job: {}
+                job: {},
+                showDetails: true,
+                showData: true,
+                showTags: true
             };
         },
 
