@@ -32,15 +32,19 @@
 
   /* Sidebar */
   .sidebar .nav-item a {
-    @apply text-gray-400 px-3 py-2 mb-1 rounded-lg flex items-center;
+    @apply text-gray-400 px-3 py-2 mb-1 rounded-lg flex items-center transition-all cursor-pointer;
   }
 
   .sidebar .nav-item a svg {
-    @apply w-5 h-5 mr-4 fill-gray-500;
+    @apply w-5 h-5 mr-4 fill-gray-500 transition-all;
   }
 
   .sidebar .nav-item a:hover {
     @apply bg-gray-800 text-primary;
+  }
+
+  .sidebar .nav-item a:hover svg {
+    fill: #7746ec;
   }
 
   .sidebar .nav-item a.active {
@@ -290,6 +294,27 @@
 
   .entry-new {
     @apply bg-violet-900/30;
+  }
+
+  /* Links */
+  a {
+    @apply transition-colors;
+  }
+
+  a:hover {
+    @apply text-primary;
+  }
+
+  a.no-underline:hover {
+    @apply underline;
+  }
+
+  .table a {
+    @apply text-primary;
+  }
+
+  .table a:hover {
+    @apply text-purple-400 underline;
   }
 
   /* Utility classes */
