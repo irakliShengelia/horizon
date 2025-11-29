@@ -296,6 +296,27 @@
     @apply bg-violet-900/30;
   }
 
+  /* Navigation Pills */
+  .nav-pills {
+    @apply flex flex-row p-3;
+  }
+
+  .nav-pills .nav-item {
+    @apply mr-2;
+  }
+
+  .nav-pills .nav-link {
+    @apply px-4 py-2 rounded-md text-gray-400 transition-colors;
+  }
+
+  .nav-pills .nav-link:hover {
+    @apply bg-gray-800 text-gray-100;
+  }
+
+  .nav-pills .nav-link.active {
+    @apply bg-gray-800 text-primary font-semibold;
+  }
+
   /* Links */
   a {
     @apply transition-colors;
