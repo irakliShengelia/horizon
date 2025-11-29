@@ -161,100 +161,90 @@
                 <h2 class="text-base font-semibold m-0">Overview</h2>
             </div>
 
-            <div class="card-bg-secondary">
-                <div class="flex">
-                    <div class="w-1/4">
-                        <div class="p-4">
-                            <small class="text-muted font-bold">Jobs Per Minute</small>
-
-                            <p class="text-2xl font-normal mt-2 mb-0">
+            <div class="card-bg-secondary dashboard-stats">
+                <!-- Row 1: First 4 stats -->
+                <div class="flex flex-wrap dashboard-stat-row">
+                    <div class="dashboard-stat-item">
+                        <div class="dashboard-stat-content">
+                            <small class="dashboard-stat-label">Jobs Per Minute</small>
+                            <p class="dashboard-stat-value">
                                 {{ stats.jobsPerMinute ? stats.jobsPerMinute.toLocaleString() : 0 }}
                             </p>
                         </div>
                     </div>
 
-                    <div class="w-1/4">
-                        <div class="p-4">
-                            <small class="text-muted font-bold" v-text="recentJobsPeriod"></small>
-
-                            <p class="text-2xl font-normal mt-2 mb-0">
+                    <div class="dashboard-stat-item">
+                        <div class="dashboard-stat-content">
+                            <small class="dashboard-stat-label" v-text="recentJobsPeriod"></small>
+                            <p class="dashboard-stat-value">
                                 {{ stats.recentJobs ? stats.recentJobs.toLocaleString() : 0 }}
                             </p>
                         </div>
                     </div>
 
-                    <div class="w-1/4">
-                        <div class="p-4">
-                            <small class="text-muted font-bold" v-text="failedJobsPeriod"></small>
-
-                            <p class="text-2xl font-normal mt-2 mb-0">
+                    <div class="dashboard-stat-item">
+                        <div class="dashboard-stat-content">
+                            <small class="dashboard-stat-label" v-text="failedJobsPeriod"></small>
+                            <p class="dashboard-stat-value">
                                 {{ stats.failedJobs ? stats.failedJobs.toLocaleString() : 0 }}
                             </p>
                         </div>
                     </div>
 
-                    <div class="w-1/4">
-                        <div class="p-4">
-                            <small class="text-muted font-bold">Status</small>
-
-                            <div class="flex items-center mt-2">
-                                <svg v-if="stats.status == 'running'" xmlns="http://www.w3.org/2000/svg" class="text-emerald-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.5rem; height: 1.5rem;">
+                    <div class="dashboard-stat-item">
+                        <div class="dashboard-stat-content">
+                            <small class="dashboard-stat-label">Status</small>
+                            <div class="dashboard-stat-value dashboard-stat-status">
+                                <svg v-if="stats.status == 'running'" xmlns="http://www.w3.org/2000/svg" class="text-emerald-500 dashboard-stat-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
-
-                                <svg v-if="stats.status == 'paused'" xmlns="http://www.w3.org/2000/svg" class="text-amber-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.5rem; height: 1.5rem;">
+                                <svg v-if="stats.status == 'paused'" xmlns="http://www.w3.org/2000/svg" class="text-amber-500 dashboard-stat-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9v6m-4.5 0V9M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
-
-                                <svg v-if="stats.status == 'inactive'" xmlns="http://www.w3.org/2000/svg" class="text-red-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.5rem; height: 1.5rem;">
+                                <svg v-if="stats.status == 'inactive'" xmlns="http://www.w3.org/2000/svg" class="text-red-500 dashboard-stat-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
                                 </svg>
-
-                                <p class="text-2xl font-normal mb-0 ml-2">{{ {running: 'Active', paused: 'Paused', inactive: 'Inactive'}[stats.status] }}</p>
-                                <small v-if="stats.status == 'running' && stats.pausedMasters > 0" class="mb-0 ml-2">({{ stats.pausedMasters }} paused)</small>
+                                <span>{{ {running: 'Active', paused: 'Paused', inactive: 'Inactive'}[stats.status] }}</span>
+                                <small v-if="stats.status == 'running' && stats.pausedMasters > 0" class="dashboard-stat-extra">({{ stats.pausedMasters }} paused)</small>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="flex">
-                    <div class="w-1/4">
-                        <div class="p-4 mb-0">
-                            <small class="text-muted font-bold">Total Processes</small>
-
-                            <p class="text-2xl font-normal mt-2">
+                <!-- Row 2: Last 4 stats -->
+                <div class="flex flex-wrap dashboard-stat-row">
+                    <div class="dashboard-stat-item">
+                        <div class="dashboard-stat-content">
+                            <small class="dashboard-stat-label">Total Processes</small>
+                            <p class="dashboard-stat-value">
                                 {{ stats.processes ? stats.processes.toLocaleString() : 0 }}
                             </p>
                         </div>
                     </div>
 
-                    <div class="w-1/4">
-                        <div class="p-4 mb-0">
-                            <small class="text-muted font-bold">Max Wait Time</small>
-
-                            <p class="mt-2 mb-0">
+                    <div class="dashboard-stat-item">
+                        <div class="dashboard-stat-content">
+                            <small class="dashboard-stat-label">Max Wait Time</small>
+                            <p class="dashboard-stat-value dashboard-stat-compact">
                                 {{ stats.max_wait_time ? humanTime(stats.max_wait_time) : '-' }}
                             </p>
-
-                            <small class="mt-1" v-if="stats.max_wait_queue">({{ stats.max_wait_queue }})</small>
+                            <small v-if="stats.max_wait_queue" class="dashboard-stat-queue">({{ stats.max_wait_queue }})</small>
                         </div>
                     </div>
 
-                    <div class="w-1/4">
-                        <div class="p-4 mb-0">
-                            <small class="text-muted font-bold">Max Runtime</small>
-
-                            <p class="text-2xl font-normal mt-2">
+                    <div class="dashboard-stat-item">
+                        <div class="dashboard-stat-content">
+                            <small class="dashboard-stat-label">Max Runtime</small>
+                            <p class="dashboard-stat-value">
                                 {{ stats.queueWithMaxRuntime ? stats.queueWithMaxRuntime : '-' }}
                             </p>
                         </div>
                     </div>
 
-                    <div class="w-1/4">
-                        <div class="p-4 mb-0">
-                            <small class="text-muted font-bold">Max Throughput</small>
-
-                            <p class="text-2xl font-normal mt-2">
+                    <div class="dashboard-stat-item">
+                        <div class="dashboard-stat-content">
+                            <small class="dashboard-stat-label">Max Throughput</small>
+                            <p class="dashboard-stat-value">
                                 {{ stats.queueWithMaxThroughput ? stats.queueWithMaxThroughput : '-' }}
                             </p>
                         </div>
