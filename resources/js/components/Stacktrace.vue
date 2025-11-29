@@ -21,7 +21,7 @@
 </script>
 
 <template>
-    <div class="table-responsive">
+    <div class="overflow-x-auto">
         <table class="table mb-0">
             <tbody>
             <tr v-for="line in lines">
@@ -29,7 +29,7 @@
             </tr>
 
             <tr v-if="! showAll">
-                <td class="card-bg-secondary"><a href="*" class="text-decoration-none" v-on:click.prevent="showAll = true">Show All</a></td>
+                <td class="card-bg-secondary"><a href="*" class="no-underline" v-on:click.prevent="showAll = true">Show All</a></td>
             </tr>
             </tbody>
         </table>
