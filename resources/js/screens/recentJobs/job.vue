@@ -21,22 +21,22 @@
             <div v-if="ready && showDetails" class="card-body card-bg-secondary">
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-2 mb-2">
                     <div class="md:col-span-2 text-muted">ID</div>
-                    <div class="md:col-span-10">{{job.id}}</div>
+                    <div class="col-span-12 md:col-span-10">{{job.id}}</div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-2 mb-2">
                     <div class="md:col-span-2 text-muted">Queue</div>
-                    <div class="md:col-span-10">{{job.queue}}</div>
+                    <div class="col-span-12 md:col-span-10">{{job.queue}}</div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-2 mb-2">
                     <div class="md:col-span-2 text-muted">Pushed</div>
-                    <div class="md:col-span-10">{{ readableTimestamp(job.payload.pushedAt) }}</div>
+                    <div class="col-span-12 md:col-span-10">{{ readableTimestamp(job.payload.pushedAt) }}</div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-2 mb-2" v-if="prettyPrintJob(job.payload.data).batchId">
                     <div class="md:col-span-2 text-muted">Batch</div>
-                    <div class="md:col-span-10">
+                    <div class="col-span-12 md:col-span-10">
                         <router-link :to="{ name: 'batches-preview', params: { batchId: prettyPrintJob(job.payload.data).batchId }}">
                             {{ prettyPrintJob(job.payload.data).batchId }}
                         </router-link>
@@ -45,13 +45,13 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-2 mb-2" v-if="delayed">
                     <div class="md:col-span-2 text-muted">Delayed Until</div>
-                    <div class="md:col-span-10">{{delayed}}</div>
+                    <div class="col-span-12 md:col-span-10">{{delayed}}</div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-2">
                     <div class="md:col-span-2 text-muted">Completed</div>
-                    <div class="md:col-span-10" v-if="job.completed_at">{{readableTimestamp(job.completed_at)}}</div>
-                    <div class="md:col-span-10" v-else>-</div>
+                    <div class="col-span-12 md:col-span-10" v-if="job.completed_at">{{readableTimestamp(job.completed_at)}}</div>
+                    <div class="col-span-12 md:col-span-10" v-else>-</div>
                 </div>
             </div>
         </div>

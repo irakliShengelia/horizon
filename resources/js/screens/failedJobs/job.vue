@@ -132,23 +132,23 @@
             <div class="card-body card-bg-secondary" v-if="ready">
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-2 mb-2">
                     <div class="md:col-span-2 text-muted">ID</div>
-                    <div class="md:col-span-10">{{job.id}}</div>
+                    <div class="col-span-12 md:col-span-10">{{job.id}}</div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-2 mb-2">
                     <div class="md:col-span-2 text-muted">Queue</div>
-                    <div class="md:col-span-10">{{job.queue}}</div>
+                    <div class="col-span-12 md:col-span-10">{{job.queue}}</div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-2 mb-2">
                     <div class="md:col-span-2 text-muted">Attempts</div>
-                    <div class="md:col-span-10">{{job.payload.attempts}}</div>
+                    <div class="col-span-12 md:col-span-10">{{job.payload.attempts}}</div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-2 mb-2">
                     <div class="md:col-span-2 text-muted">Retries</div>
-                    <div class="md:col-span-10">{{job.retried_by.length}}</div>
+                    <div class="col-span-12 md:col-span-10">{{job.retried_by.length}}</div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-2 mb-2" v-if="job.payload.retry_of">
                     <div class="md:col-span-2 text-muted">Retry of ID</div>
-                    <div class="md:col-span-10">
+                    <div class="col-span-12 md:col-span-10">
                          <a :href="Horizon.basePath + '/failed/' + job.payload.retry_of">
                             {{ job.payload.retry_of }}
                         </a>
@@ -156,11 +156,11 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-2 mb-2">
                     <div class="md:col-span-2 text-muted">Tags</div>
-                    <div class="md:col-span-10">{{ job.payload.tags && job.payload.tags.length ? job.payload.tags.join(', ') : '' }}</div>
+                    <div class="col-span-12 md:col-span-10">{{ job.payload.tags && job.payload.tags.length ? job.payload.tags.join(', ') : '' }}</div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-2 mb-2" v-if="prettyPrintJob(job.payload.data).batchId">
                     <div class="md:col-span-2 text-muted">Batch</div>
-                    <div class="md:col-span-10">
+                    <div class="col-span-12 md:col-span-10">
                         <router-link :to="{ name: 'batches-preview', params: { batchId: prettyPrintJob(job.payload.data).batchId }}">
                             {{ prettyPrintJob(job.payload.data).batchId }}
                         </router-link>
@@ -168,11 +168,11 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-2 mb-2">
                     <div class="md:col-span-2 text-muted">Pushed</div>
-                    <div class="md:col-span-10">{{ readableTimestamp(job.payload.pushedAt) }}</div>
+                    <div class="col-span-12 md:col-span-10">{{ readableTimestamp(job.payload.pushedAt) }}</div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-2">
                     <div class="md:col-span-2 text-muted">Failed</div>
-                    <div class="md:col-span-10">{{readableTimestamp(job.failed_at)}}</div>
+                    <div class="col-span-12 md:col-span-10">{{readableTimestamp(job.failed_at)}}</div>
                 </div>
             </div>
         </div>

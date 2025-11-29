@@ -40,19 +40,19 @@
   }
 
   .sidebar .nav-item a:hover {
-    @apply bg-gray-800 text-primary;
+    @apply bg-gray-800 text-gray-100;
   }
 
   .sidebar .nav-item a:hover svg {
-    fill: #ff5c4d;
+    fill: #f3f4f6;
   }
 
   .sidebar .nav-item a.active {
-    @apply bg-gray-800 text-primary;
+    @apply bg-gray-800 text-gray-100;
   }
 
   .sidebar .nav-item a.active svg {
-    fill: #ff5c4d;
+    fill: #f3f4f6;
   }
 
   /* Cards */
@@ -405,10 +405,6 @@
       @apply absolute w-0 h-0 p-0 m-0 overflow-visible pointer-events-none;
     }
 
-    /* Ensure content column is full width on mobile */
-    .lg\:col-span-10 {
-      @apply w-full max-w-full;
-    }
 
     .sidebar {
       @apply block fixed top-0 -left-full w-[280px] h-screen bg-gray-900 z-[1050] transition-all duration-300 overflow-y-auto p-4 shadow-lg border-r border-gray-800 pointer-events-auto;

@@ -125,7 +125,7 @@
                 </div>
             </div>
 
-            <div class="lg:col-span-10">
+            <div class="col-span-12 lg:col-span-10">
                 @if ($isDownForMaintenance)
                     <div class="alert alert-warning">
                         This application is in "maintenance mode". Queued jobs may not be processed unless your worker is using the "force" flag.

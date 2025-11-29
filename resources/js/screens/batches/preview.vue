@@ -106,7 +106,7 @@
             <div class="card-body card-bg-secondary" v-if="ready">
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-2 mb-2">
                     <div class="md:col-span-2 text-muted">ID</div>
-                    <div class="md:col-span-10">
+                    <div class="col-span-12 md:col-span-10">
                         {{batch.id}}
 
                         <small class="ml-1 badge badge-danger badge-sm" v-if="batch.failedJobs > 0 && batch.totalJobs - batch.pendingJobs < batch.totalJobs">
@@ -122,43 +122,43 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-2 mb-2" v-if="batch.name">
                     <div class="md:col-span-2 text-muted">Name</div>
-                    <div class="md:col-span-10">{{batch.name}}</div>
+                    <div class="col-span-12 md:col-span-10">{{batch.name}}</div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-2 mb-2" v-if="batch.options.queue">
                     <div class="md:col-span-2 text-muted">Queue</div>
-                    <div class="md:col-span-10">{{batch.options.queue}}</div>
+                    <div class="col-span-12 md:col-span-10">{{batch.options.queue}}</div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-2 mb-2" v-if="batch.options.connection">
                     <div class="md:col-span-2 text-muted">Connection</div>
-                    <div class="md:col-span-10">{{batch.options.connection}}</div>
+                    <div class="col-span-12 md:col-span-10">{{batch.options.connection}}</div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-2 mb-2">
                     <div class="md:col-span-2 text-muted">Created</div>
-                    <div class="md:col-span-10">{{ formatDateIso(batch.createdAt).format('YYYY-MM-DD HH:mm:ss') }}</div>
+                    <div class="col-span-12 md:col-span-10">{{ formatDateIso(batch.createdAt).format('YYYY-MM-DD HH:mm:ss') }}</div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-2 mb-2" v-if="batch.finishedAt">
                     <div class="md:col-span-2 text-muted">Finished</div>
-                    <div class="md:col-span-10">{{ formatDateIso(batch.finishedAt).format('YYYY-MM-DD HH:mm:ss') }}</div>
+                    <div class="col-span-12 md:col-span-10">{{ formatDateIso(batch.finishedAt).format('YYYY-MM-DD HH:mm:ss') }}</div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-2 mb-2" v-if="batch.cancelledAt">
                     <div class="md:col-span-2 text-muted">Cancelled</div>
-                    <div class="md:col-span-10">{{ formatDateIso(batch.cancelledAt).format('YYYY-MM-DD HH:mm:ss') }}</div>
+                    <div class="col-span-12 md:col-span-10">{{ formatDateIso(batch.cancelledAt).format('YYYY-MM-DD HH:mm:ss') }}</div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-2 mb-2">
                     <div class="md:col-span-2 text-muted">Total Jobs</div>
-                    <div class="md:col-span-10">{{batch.totalJobs}}</div>
+                    <div class="col-span-12 md:col-span-10">{{batch.totalJobs}}</div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-2 mb-2">
                     <div class="md:col-span-2 text-muted">Pending Jobs</div>
-                    <div class="md:col-span-10">{{batch.pendingJobs}}</div>
+                    <div class="col-span-12 md:col-span-10">{{batch.pendingJobs}}</div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-2 mb-2">
                     <div class="md:col-span-2 text-muted">Failed Jobs</div>
-                    <div class="md:col-span-10">{{batch.failedJobs}}</div>
+                    <div class="col-span-12 md:col-span-10">{{batch.failedJobs}}</div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-2">
                     <div class="md:col-span-2 text-muted">Processed Jobs<br><small>(Including Failed)</small></div>
-                    <div class="md:col-span-10">{{ (batch.processedJobs) }} ({{batch.progress}}%)</div>
+                    <div class="col-span-12 md:col-span-10">{{ (batch.processedJobs) }} ({{batch.progress}}%)</div>
                 </div>
             </div>
         </div>
