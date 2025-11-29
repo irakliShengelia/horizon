@@ -271,22 +271,22 @@
             <table class="table table-hover mb-0">
                 <thead>
                 <tr>
-                    <th>Queue</th>
-                    <th class="text-right" style="width: 120px;">Jobs</th>
-                    <th class="text-right" style="width: 120px;">Processes</th>
-                    <th class="text-right" style="width: 180px;">Wait</th>
+                    <th class="text-left">Queue</th>
+                    <th class="text-left" style="width: 120px;">Jobs</th>
+                    <th class="text-left" style="width: 120px;">Processes</th>
+                    <th class="text-left" style="width: 180px;">Wait</th>
                 </tr>
                 </thead>
 
                 <tbody>
                     <template v-for="queue in workload">
                         <tr>
-                            <td :class="{ 'font-bold': queue.split_queues }">
+                            <td :class="{ 'font-bold': queue.split_queues }" class="text-left">
                                 <span>{{ queue.name.replace(/,/g, ', ') }}</span>
                             </td>
-                            <td class="text-right text-muted" :class="{ 'font-bold': queue.split_queues }">{{ queue.length ? queue.length.toLocaleString() : 0 }}</td>
-                            <td class="text-right text-muted" :class="{ 'font-bold': queue.split_queues }">{{ queue.processes ? queue.processes.toLocaleString() : 0 }}</td>
-                            <td class="text-right text-muted" :class="{ 'font-bold': queue.split_queues }">{{ humanTime(queue.wait) }}</td>
+                            <td class="text-left text-muted" :class="{ 'font-bold': queue.split_queues }">{{ queue.length ? queue.length.toLocaleString() : 0 }}</td>
+                            <td class="text-left text-muted" :class="{ 'font-bold': queue.split_queues }">{{ queue.processes ? queue.processes.toLocaleString() : 0 }}</td>
+                            <td class="text-left text-muted" :class="{ 'font-bold': queue.split_queues }">{{ humanTime(queue.wait) }}</td>
                         </tr>
 
                         <tr v-for="split_queue in queue.split_queues">
@@ -323,10 +323,10 @@
             <table class="table table-hover mb-0">
                 <thead>
                 <tr>
-                    <th>Supervisor</th>
-                    <th>Queues</th>
-                    <th class="text-right" style="width: 120px;">Processes</th>
-                    <th class="text-right" style="width: 180px;">Balancing</th>
+                    <th class="text-left">Supervisor</th>
+                    <th class="text-left">Queues</th>
+                    <th class="text-left" style="width: 120px;">Processes</th>
+                    <th class="text-left" style="width: 180px;">Balancing</th>
                 </tr>
                 </thead>
 
