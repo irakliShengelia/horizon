@@ -44,7 +44,7 @@
   }
 
   .sidebar .nav-item a:hover svg {
-    fill: #7746ec;
+    fill: #ff5c4d;
   }
 
   .sidebar .nav-item a.active {
@@ -52,7 +52,7 @@
   }
 
   .sidebar .nav-item a.active svg {
-    fill: #7746ec;
+    fill: #ff5c4d;
   }
 
   /* Cards */
@@ -260,7 +260,7 @@
   }
 
   .fill-primary {
-    fill: #7746ec;
+    fill: #ff5c4d;
   }
 
   button:hover .fill-primary {
@@ -406,7 +406,7 @@
     }
 
     /* Ensure content column is full width on mobile */
-    .col-12.col-lg-10 {
+    .lg\:col-span-10 {
       @apply w-full max-w-full;
     }
 
@@ -560,7 +560,6 @@
   animation: spin 2s linear infinite;
 }
 
-/* Additional custom styles from base.scss that need to be preserved */
 [v-cloak] {
   display: none;
 }

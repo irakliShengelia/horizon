@@ -406,7 +406,7 @@
     }
 
     /* Ensure content column is full width on mobile */
-    .col-12.col-lg-10 {
+    .lg\:col-span-10 {
       @apply w-full max-w-full;
     }
 
@@ -560,7 +560,6 @@
   animation: spin 2s linear infinite;
 }
 
-/* Additional custom styles from base.scss that need to be preserved */
 [v-cloak] {
   display: none;
 }
