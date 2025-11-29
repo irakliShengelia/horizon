@@ -27,7 +27,29 @@ const app = createApp({
                 confirmationCancel: null,
             },
             autoLoadsNewEntries: localStorage.autoLoadsNewEntries === '1',
+            mobileMenuOpen: false,
         };
+    },
+    methods: {
+        toggleMobileMenu() {
+            this.mobileMenuOpen = !this.mobileMenuOpen;
+            // Prevent body scroll when menu is open
+            if (this.mobileMenuOpen) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        },
+        closeMobileMenu() {
+            this.mobileMenuOpen = false;
+            document.body.style.overflow = '';
+        },
+    },
+    watch: {
+        $route() {
+            // Close mobile menu when navigating
+            this.closeMobileMenu();
+        },
     },
 });
 
