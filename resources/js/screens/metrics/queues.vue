@@ -58,7 +58,7 @@
         <table v-if="ready && queues.length > 0" class="table table-hover mb-0">
             <thead>
             <tr>
-                <th>Queue</th>
+                <th class="text-left">Queue</th>
             </tr>
             </thead>
 

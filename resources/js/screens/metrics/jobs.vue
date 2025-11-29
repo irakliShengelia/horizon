@@ -58,7 +58,7 @@
         <table v-if="ready && jobs.length > 0" class="table table-hover mb-0">
             <thead>
             <tr>
-                <th>Job</th>
+                <th class="text-left">Job</th>
             </tr>
             </thead>
 

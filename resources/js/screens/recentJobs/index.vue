@@ -174,11 +174,11 @@
             <table v-if="ready && jobs.length > 0" class="table table-hover mb-0">
                 <thead>
                     <tr>
-                        <th>Job</th>
-                        <th v-if="$route.params.type=='pending'" class="text-right">Queued</th>
-                        <th v-if="$route.params.type=='completed' || $route.params.type=='silenced'" class="text-right">Queued</th>
-                        <th v-if="$route.params.type=='completed' || $route.params.type=='silenced'" class="text-right">Completed</th>
-                        <th v-if="$route.params.type=='completed' || $route.params.type=='silenced'" class="text-right">Runtime</th>
+                        <th class="text-left">Job</th>
+                        <th v-if="$route.params.type=='pending'" class="text-left">Queued</th>
+                        <th v-if="$route.params.type=='completed' || $route.params.type=='silenced'" class="text-left">Queued</th>
+                        <th v-if="$route.params.type=='completed' || $route.params.type=='silenced'" class="text-left">Completed</th>
+                        <th v-if="$route.params.type=='completed' || $route.params.type=='silenced'" class="text-left">Runtime</th>
                     </tr>
                 </thead>
 
