@@ -115,8 +115,8 @@
 <template>
     <div>
         <div class="card overflow-hidden">
-            <div class="card-header d-flex align-items-center justify-content-between">
-                <h2 class="h6 m-0">Monitoring</h2>
+            <div class="card-header flex items-center justify-between">
+                <h2 class="text-base font-semibold m-0">Monitoring</h2>
 
                 <button @click="openNewTagModal" class="btn btn-primary btn-sm">Monitor Tag</button>
             </div>

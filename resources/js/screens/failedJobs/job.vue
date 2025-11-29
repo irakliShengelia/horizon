@@ -108,9 +108,9 @@
 <template>
     <div>
         <div class="card overflow-hidden">
-            <div class="card-header d-flex align-items-center justify-content-between">
-                <h2 class="h6 m-0" v-if="!ready">Job Preview</h2>
-                <h2 class="h6 m-0" v-if="ready">{{job.name}}</h2>
+            <div class="card-header flex items-center justify-between">
+                <h2 class="text-base font-semibold m-0" v-if="!ready">Job Preview</h2>
+                <h2 class="text-base font-semibold m-0" v-if="ready">{{job.name}}</h2>
 
                 <button class="btn btn-primary" v-on:click.prevent="retry(job.id)">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="icon" fill="currentColor" :class="{spin: retrying}">
@@ -121,8 +121,8 @@
                 </button>
             </div>
 
-            <div v-if="!ready" class="d-flex align-items-center justify-content-center card-bg-secondary p-5 bottom-radius">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="icon spin me-2 fill-text-color">
+            <div v-if="!ready" class="flex items-center justify-center card-bg-secondary p-5 bottom-radius">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="icon animate-spin mr-2 fill-text-color">
                     <path d="M12 10a2 2 0 0 1-3.41 1.41A2 2 0 0 1 10 8V0a9.97 9.97 0 0 1 10 10h-8zm7.9 1.41A10 10 0 1 1 8.59.1v2.03a8 8 0 1 0 9.29 9.29h2.02zm-4.07 0a6 6 0 1 1-7.25-7.25v2.1a3.99 3.99 0 0 0-1.4 6.57 4 4 0 0 0 6.56-1.42h2.1z"></path>
                 </svg>
 
@@ -130,56 +130,56 @@
             </div>
 
             <div class="card-body card-bg-secondary" v-if="ready">
-                <div class="row mb-2">
-                    <div class="col-md-2 text-muted">ID</div>
-                    <div class="col">{{job.id}}</div>
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-2 mb-2">
+                    <div class="md:col-span-2 text-muted">ID</div>
+                    <div class="md:col-span-10">{{job.id}}</div>
                 </div>
-                <div class="row mb-2">
-                    <div class="col-md-2 text-muted">Queue</div>
-                    <div class="col">{{job.queue}}</div>
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-2 mb-2">
+                    <div class="md:col-span-2 text-muted">Queue</div>
+                    <div class="md:col-span-10">{{job.queue}}</div>
                 </div>
-                <div class="row mb-2">
-                    <div class="col-md-2 text-muted">Attempts</div>
-                    <div class="col">{{job.payload.attempts}}</div>
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-2 mb-2">
+                    <div class="md:col-span-2 text-muted">Attempts</div>
+                    <div class="md:col-span-10">{{job.payload.attempts}}</div>
                 </div>
-                <div class="row mb-2">
-                    <div class="col-md-2 text-muted">Retries</div>
-                    <div class="col">{{job.retried_by.length}}</div>
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-2 mb-2">
+                    <div class="md:col-span-2 text-muted">Retries</div>
+                    <div class="md:col-span-10">{{job.retried_by.length}}</div>
                 </div>
-                <div class="row mb-2" v-if="job.payload.retry_of">
-                    <div class="col-md-2 text-muted">Retry of ID</div>
-                    <div class="col">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-2 mb-2" v-if="job.payload.retry_of">
+                    <div class="md:col-span-2 text-muted">Retry of ID</div>
+                    <div class="md:col-span-10">
                          <a :href="Horizon.basePath + '/failed/' + job.payload.retry_of">
                             {{ job.payload.retry_of }}
                         </a>
                     </div>
                 </div>
-                <div class="row mb-2">
-                    <div class="col-md-2 text-muted">Tags</div>
-                    <div class="col">{{ job.payload.tags && job.payload.tags.length ? job.payload.tags.join(', ') : '' }}</div>
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-2 mb-2">
+                    <div class="md:col-span-2 text-muted">Tags</div>
+                    <div class="md:col-span-10">{{ job.payload.tags && job.payload.tags.length ? job.payload.tags.join(', ') : '' }}</div>
                 </div>
-                <div class="row mb-2" v-if="prettyPrintJob(job.payload.data).batchId">
-                    <div class="col-md-2 text-muted">Batch</div>
-                    <div class="col">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-2 mb-2" v-if="prettyPrintJob(job.payload.data).batchId">
+                    <div class="md:col-span-2 text-muted">Batch</div>
+                    <div class="md:col-span-10">
                         <router-link :to="{ name: 'batches-preview', params: { batchId: prettyPrintJob(job.payload.data).batchId }}">
                             {{ prettyPrintJob(job.payload.data).batchId }}
                         </router-link>
                     </div>
                 </div>
-                <div class="row mb-2">
-                    <div class="col-md-2 text-muted">Pushed</div>
-                    <div class="col">{{ readableTimestamp(job.payload.pushedAt) }}</div>
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-2 mb-2">
+                    <div class="md:col-span-2 text-muted">Pushed</div>
+                    <div class="md:col-span-10">{{ readableTimestamp(job.payload.pushedAt) }}</div>
                 </div>
-                <div class="row">
-                    <div class="col-md-2 text-muted">Failed</div>
-                    <div class="col">{{readableTimestamp(job.failed_at)}}</div>
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-2">
+                    <div class="md:col-span-2 text-muted">Failed</div>
+                    <div class="md:col-span-10">{{readableTimestamp(job.failed_at)}}</div>
                 </div>
             </div>
         </div>
 
         <div class="card overflow-hidden mt-4" v-if="ready">
-            <div class="card-header d-flex align-items-center justify-content-between">
-                <h2 class="h6 m-0">Exception</h2>
+            <div class="card-header flex items-center justify-between">
+                <h2 class="text-base font-semibold m-0">Exception</h2>
             </div>
             <div>
                 <stack-trace :trace="job.exception.split('\n')"></stack-trace>
@@ -187,8 +187,8 @@
         </div>
 
         <div class="card overflow-hidden mt-4" v-if="ready">
-            <div class="card-header d-flex align-items-center justify-content-between">
-                <h2 class="h6 m-0">Exception Context</h2>
+            <div class="card-header flex items-center justify-between">
+                <h2 class="text-base font-semibold m-0">Exception Context</h2>
             </div>
 
             <div class="card-body code-bg text-white">
@@ -198,8 +198,8 @@
 
 
         <div class="card overflow-hidden mt-4" v-if="ready">
-            <div class="card-header d-flex align-items-center justify-content-between">
-                <h2 class="h6 m-0">Data</h2>
+            <div class="card-header flex items-center justify-between">
+                <h2 class="text-base font-semibold m-0">Data</h2>
             </div>
 
             <div class="card-body code-bg text-white">
@@ -208,8 +208,8 @@
         </div>
 
         <div class="card overflow-hidden mt-4" v-if="ready && job.retried_by.length">
-            <div class="card-header d-flex align-items-center justify-content-between">
-                <h2 class="h6 m-0">Recent Retries</h2>
+            <div class="card-header flex items-center justify-between">
+                <h2 class="text-base font-semibold m-0">Recent Retries</h2>
             </div>
 
             <table class="table table-hover mb-0">
@@ -217,7 +217,7 @@
                 <tr>
                     <th>Job</th>
                     <th>ID</th>
-                    <th class="text-end">Retry Time</th>
+                    <th class="text-right">Retry Time</th>
                 </tr>
                 </thead>
 
@@ -237,7 +237,7 @@
                             <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5A.75.75 0 0110 5zm0 10a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
                         </svg>
 
-                        <span class="ms-2">{{ retry.status.charAt(0).toUpperCase() + retry.status.slice(1) }}</span>
+                        <span class="ml-2">{{ retry.status.charAt(0).toUpperCase() + retry.status.slice(1) }}</span>
                     </td>
 
                     <td class="table-fit">
@@ -247,7 +247,7 @@
                         <span v-else>{{ retry.id }}</span>
                     </td>
 
-                    <td class="text-end table-fit text-muted">
+                    <td class="text-right table-fit text-muted">
                         {{readableTimestamp(retry.retried_at)}}
                     </td>
                 </tr>

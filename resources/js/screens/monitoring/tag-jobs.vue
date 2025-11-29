@@ -143,8 +143,8 @@
 
 <template>
     <div>
-        <div v-if="!ready" class="d-flex align-items-center justify-content-center card-bg-secondary p-5 bottom-radius">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="icon spin me-2 fill-text-color">
+        <div v-if="!ready" class="flex items-center justify-center card-bg-secondary p-5 bottom-radius">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="icon animate-spin mr-2 fill-text-color">
                 <path d="M12 10a2 2 0 0 1-3.41 1.41A2 2 0 0 1 10 8V0a9.97 9.97 0 0 1 10 10h-8zm7.9 1.41A10 10 0 1 1 8.59.1v2.03a8 8 0 1 0 9.29 9.29h2.02zm-4.07 0a6 6 0 1 1-7.25-7.25v2.1a3.99 3.99 0 0 0-1.4 6.57 4 4 0 0 0 6.56-1.42h2.1z"></path>
             </svg>
 
@@ -152,7 +152,7 @@
         </div>
 
 
-        <div v-if="ready && jobs.length == 0" class="d-flex flex-column align-items-center justify-content-center card-bg-secondary p-5 bottom-radius">
+        <div v-if="ready && jobs.length == 0" class="flex flex-col items-center justify-center card-bg-secondary p-5 bottom-radius">
             <span>There aren't any jobs for this tag.</span>
         </div>
 
@@ -162,8 +162,8 @@
                 <th>Job</th>
                 <th>Queued</th>
                 <th v-if="type == 'jobs'">Completed</th>
-                <th class="text-end" v-if="type == 'jobs'">Runtime</th>
-                <th class="text-end" v-if="type == 'failed'">Failed</th>
+                <th class="text-right" v-if="type == 'jobs'">Runtime</th>
+                <th class="text-right" v-if="type == 'failed'">Failed</th>
             </tr>
             </thead>
 

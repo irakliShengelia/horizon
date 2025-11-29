@@ -127,12 +127,12 @@
 <template>
     <div>
         <div class="card overflow-hidden">
-            <div class="card-header d-flex align-items-center justify-content-between">
-                <h2 class="h6 m-0">Batches</h2>
+            <div class="card-header flex items-center justify-between">
+                <h2 class="text-base font-semibold m-0">Batches</h2>
             </div>
 
-            <div v-if="!ready" class="d-flex align-items-center justify-content-center card-bg-secondary p-5 bottom-radius">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="icon spin me-2 fill-text-color">
+            <div v-if="!ready" class="flex items-center justify-center card-bg-secondary p-5 bottom-radius">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="icon animate-spin mr-2 fill-text-color">
                     <path d="M12 10a2 2 0 0 1-3.41 1.41A2 2 0 0 1 10 8V0a9.97 9.97 0 0 1 10 10h-8zm7.9 1.41A10 10 0 1 1 8.59.1v2.03a8 8 0 1 0 9.29 9.29h2.02zm-4.07 0a6 6 0 1 1-7.25-7.25v2.1a3.99 3.99 0 0 0-1.4 6.57 4 4 0 0 0 6.56-1.42h2.1z"></path>
                 </svg>
 
@@ -140,7 +140,7 @@
             </div>
 
 
-            <div v-if="ready && batches.length == 0" class="d-flex flex-column align-items-center justify-content-center card-bg-secondary p-5 bottom-radius">
+            <div v-if="ready && batches.length == 0" class="flex flex-col items-center justify-center card-bg-secondary p-5 bottom-radius">
                 <span>There aren't any batches.</span>
             </div>
 
@@ -149,9 +149,9 @@
                 <tr>
                     <th>Batch</th>
                     <th>Status</th>
-                    <th class="text-end">Size</th>
-                    <th class="text-end">Completion</th>
-                    <th class="text-end">Created</th>
+                    <th class="text-right">Size</th>
+                    <th class="text-right">Completion</th>
+                    <th class="text-right">Created</th>
                 </tr>
                 </thead>
 
@@ -184,10 +184,10 @@
                             Cancelled
                         </small>
                     </td>
-                    <td class="text-end text-muted">{{ batch.totalJobs }}</td>
-                    <td class="text-end text-muted">{{ batch.progress }}%</td>
+                    <td class="text-right text-muted">{{ batch.totalJobs }}</td>
+                    <td class="text-right text-muted">{{ batch.progress }}%</td>
 
-                    <td class="text-end table-fit">
+                    <td class="text-right table-fit">
                         {{ formatDateIso(batch.createdAt).format("YYYY-MM-DD HH:mm:ss") }}
                     </td>
                 </tr>
