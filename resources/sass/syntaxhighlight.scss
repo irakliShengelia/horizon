@@ -40,7 +40,8 @@
         padding-right: 10px;
     }
     .vjs-value {
-        @extend .text-break;
+        word-wrap: break-word;
+        word-break: break-word;
     }
     .vjs-value-string {
         color: #c3e88d !important;

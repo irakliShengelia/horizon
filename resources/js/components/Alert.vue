@@ -1,39 +1,16 @@
 <script type="text/ecmascript-6">
-    import { Modal } from 'bootstrap';
-
     export default {
         props: ['type', 'message', 'autoClose', 'confirmationProceed', 'confirmationCancel'],
 
         data(){
             return {
                 timeout: null,
-                alertModal: null,
-                anotherModalOpened: document.body.classList.contains('modal-open')
+                isVisible: true
             }
         },
 
 
         mounted() {
-            const alertModalElement = document.getElementById('alertModal');
-
-            this.alertModal = Modal.getOrCreateInstance(alertModalElement, {
-                backdrop: 'static',
-            })
-
-            this.alertModal.show();
-
-            alertModalElement.addEventListener('hidden.bs.modal', e => {
-                this.$root.alert.type = null;
-                this.$root.alert.autoClose = false;
-                this.$root.alert.message = '';
-                this.$root.alert.confirmationProceed = null;
-                this.$root.alert.confirmationCancel = null;
-
-                if (this.anotherModalOpened) {
-                    document.body.classList.add('modal-open');
-                }
-            }, this);
-
             if (this.autoClose) {
                 this.timeout = setTimeout(() => {
                     this.close();
@@ -49,7 +26,13 @@
             close(){
                 clearTimeout(this.timeout);
 
-                this.alertModal.hide();
+                this.isVisible = false;
+
+                this.$root.alert.type = null;
+                this.$root.alert.autoClose = false;
+                this.$root.alert.message = '';
+                this.$root.alert.confirmationProceed = null;
+                this.$root.alert.confirmationCancel = null;
             },
 
 
@@ -78,43 +61,33 @@
 </script>
 
 <template>
-    <div class="modal" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <p class="m-0 py-4">{{message}}</p>
-                </div>
+    <div v-if="isVisible" class="fixed inset-0 z-[99999] flex items-center justify-center bg-black/50" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-md w-full mx-4" role="document">
+            <div class="p-6">
+                <p class="m-0 py-4 text-gray-900 dark:text-gray-100">{{message}}</p>
+            </div>
 
+            <div class="px-6 pb-6 flex justify-start flex-row-reverse gap-2">
+                <button v-if="type == 'error'" class="btn btn-primary" @click="close">
+                    Close
+                </button>
 
-                <div class="modal-footer justify-content-start flex-row-reverse">
+                <button v-if="type == 'success'" class="btn btn-primary" @click="close">
+                    Okay
+                </button>
 
-                    <button v-if="type == 'error'" class="btn btn-primary" @click="close">
-                        Close
-                    </button>
-
-                    <button v-if="type == 'success'" class="btn btn-primary" @click="close">
-                        Okay
-                    </button>
-
-
-                    <button v-if="type == 'confirmation'" class="btn btn-danger" @click="confirm">
-                        Yes
-                    </button>
-                    <button v-if="type == 'confirmation'" class="btn" @click="cancel">
-                        Cancel
-                    </button>
-
-                </div>
+                <button v-if="type == 'confirmation'" class="btn btn-danger" @click="confirm">
+                    Yes
+                </button>
+                <button v-if="type == 'confirmation'" class="btn btn-secondary" @click="cancel">
+                    Cancel
+                </button>
             </div>
         </div>
     </div>
 </template>
 
 <style>
-    #alertModal {
-        z-index: 99999;
-        background: rgba(0, 0, 0, 0.5);
-    }
 
     #alertModal svg {
         display: block;

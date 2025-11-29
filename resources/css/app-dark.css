@@ -1,0 +1,521 @@
+@import '../sass/syntaxhighlight.scss';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  body {
+    @apply bg-gray-900 text-gray-100 pb-5;
+  }
+}
+
+@layer components {
+  /* Container */
+  .container {
+    @apply max-w-[1440px] px-4;
+  }
+
+  /* Header */
+  .header {
+    @apply border-b border-gray-700;
+  }
+
+  .logo {
+    @apply no-underline text-gray-300;
+  }
+
+  .logo svg {
+    @apply w-8 h-8;
+  }
+
+  /* Sidebar */
+  .sidebar .nav-item a {
+    @apply text-gray-400 px-3 py-2 mb-1 rounded-lg flex items-center;
+  }
+
+  .sidebar .nav-item a svg {
+    @apply w-5 h-5 mr-4 fill-gray-500;
+  }
+
+  .sidebar .nav-item a:hover {
+    @apply bg-gray-800 text-primary;
+  }
+
+  .sidebar .nav-item a.active {
+    @apply bg-gray-800 text-primary;
+  }
+
+  .sidebar .nav-item a.active svg {
+    fill: #7746ec;
+  }
+
+  /* Cards */
+  .card {
+    @apply shadow-md rounded-lg border-0 bg-gray-800;
+  }
+
+  .card .bottom-radius {
+    @apply rounded-b-lg;
+  }
+
+  .card .card-header {
+    @apply py-3 px-4 bg-gray-800 border-b-0 min-h-[60px];
+  }
+
+  .card .card-body {
+    @apply p-5;
+  }
+
+  .card-bg-secondary {
+    @apply bg-gray-800;
+  }
+
+  /* Tables */
+  .table {
+    @apply w-full;
+  }
+
+  .table th,
+  .table td {
+    @apply px-5 py-3;
+  }
+
+  .table.table-sm th,
+  .table.table-sm td {
+    @apply px-5 py-4;
+  }
+
+  .table th {
+    @apply bg-gray-800 text-sm py-2 px-5 border-b-0;
+  }
+
+  .table:not(.table-borderless) td {
+    @apply border-t border-gray-700;
+  }
+
+  .table.penultimate-column-right th:nth-last-child(2),
+  .table.penultimate-column-right td:nth-last-child(2) {
+    @apply text-right;
+  }
+
+  .table th.table-fit,
+  .table td.table-fit {
+    @apply w-px whitespace-nowrap;
+  }
+
+  .table-hover tbody tr:hover {
+    @apply bg-gray-800;
+  }
+
+  /* Badges */
+  .badge {
+    @apply inline-block px-2.5 py-0.5 text-sm font-semibold rounded-md;
+  }
+
+  .badge-secondary {
+    @apply bg-gray-700 text-gray-300;
+  }
+
+  .badge-success {
+    @apply bg-emerald-900 text-emerald-300;
+  }
+
+  .badge-info {
+    @apply bg-blue-900 text-blue-300;
+  }
+
+  .badge-warning {
+    @apply bg-amber-900 text-amber-300;
+  }
+
+  .badge-danger {
+    @apply bg-red-900 text-red-300;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 transition-colors;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-purple-700 focus:ring-primary;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-600;
+  }
+
+  .btn-success {
+    @apply bg-emerald-600 text-white hover:bg-emerald-700 focus:ring-emerald-600;
+  }
+
+  .btn-danger {
+    @apply bg-red-600 text-white hover:bg-red-700 focus:ring-red-600;
+  }
+
+  .btn-warning {
+    @apply bg-amber-600 text-white hover:bg-amber-700 focus:ring-amber-600;
+  }
+
+  .btn-outline-primary {
+    @apply border border-primary text-primary hover:bg-primary hover:text-white focus:ring-primary;
+  }
+
+  .btn-muted {
+    @apply text-gray-400 bg-gray-800 hover:text-gray-100 hover:bg-gray-700;
+  }
+
+  .btn-muted.active {
+    @apply text-white bg-primary;
+  }
+
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs;
+  }
+
+  .btn-group {
+    @apply inline-flex rounded-md shadow-sm;
+  }
+
+  .btn-group .btn {
+    @apply rounded-none first:rounded-l-md last:rounded-r-md;
+  }
+
+  /* Forms */
+  .form-control {
+    @apply block w-full px-3 py-2 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary bg-gray-800 text-gray-100;
+  }
+
+  .form-control-sm {
+    @apply px-2 py-1 text-sm;
+  }
+
+  .form-control-with-icon {
+    @apply relative;
+  }
+
+  .form-control-with-icon .icon-wrapper {
+    @apply flex items-center justify-center absolute top-0 left-3 bottom-0;
+  }
+
+  .form-control-with-icon .icon-wrapper .icon {
+    @apply fill-gray-500;
+  }
+
+  .form-control-with-icon .form-control {
+    @apply pl-9 text-sm rounded-full;
+  }
+
+  /* Alerts */
+  .alert {
+    @apply relative px-4 py-3 mb-4 border rounded-md;
+  }
+
+  .alert-warning {
+    @apply bg-amber-900/20 border-amber-700 text-amber-300;
+  }
+
+  .alert-danger {
+    @apply bg-red-900/20 border-red-700 text-red-300;
+  }
+
+  .alert-success {
+    @apply bg-emerald-900/20 border-emerald-700 text-emerald-300;
+  }
+
+  .alert-info {
+    @apply bg-blue-900/20 border-blue-700 text-blue-300;
+  }
+
+  /* Icons */
+  svg.icon {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .fill-text-color {
+    fill: currentColor;
+  }
+
+  .fill-danger {
+    fill: #ef4444;
+  }
+
+  .fill-warning {
+    fill: #f59e0b;
+  }
+
+  .fill-info {
+    fill: #3b82f6;
+  }
+
+  .fill-success {
+    fill: #10b981;
+  }
+
+  .fill-primary {
+    fill: #7746ec;
+  }
+
+  button:hover .fill-primary {
+    fill: #ffffff;
+  }
+
+  .btn-outline-primary.active .fill-primary {
+    fill: #111827;
+  }
+
+  /* Control Actions */
+  .control-action svg {
+    fill: #4b5563;
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .control-action svg:hover {
+    fill: #9333ea;
+  }
+
+  /* Code */
+  .code-bg {
+    @apply bg-[#292d3e] text-gray-100 p-4 rounded-md overflow-x-auto;
+  }
+
+  /* New Entries */
+  .code-entry-new {
+    @apply bg-gray-600;
+  }
+
+  .entry-new {
+    @apply bg-violet-900/30;
+  }
+
+  /* Utility classes */
+  .text-muted {
+    @apply text-gray-500;
+  }
+
+  /* Responsive utilities */
+  @media (min-width: 992px) {
+    html {
+      @apply min-w-[1140px];
+    }
+  }
+
+  /* Mobile Responsive Styles */
+  @media (max-width: 991.98px) {
+    * {
+      @apply max-w-full;
+    }
+
+    html {
+      @apply overflow-x-hidden w-full;
+    }
+
+    body {
+      @apply overflow-x-hidden w-full relative;
+    }
+
+    .container {
+      @apply max-w-full px-3;
+    }
+
+    [class*="col-"] {
+      @apply px-1.5;
+    }
+
+    .header {
+      @apply relative py-4 w-full overflow-hidden px-0;
+    }
+
+    .header .mobile-menu-toggle {
+      @apply inline-flex p-2 flex-shrink-0;
+    }
+
+    .header .mobile-menu-toggle .icon {
+      @apply w-5 h-5;
+    }
+
+    .header .logo {
+      @apply flex-shrink min-w-0 overflow-hidden;
+    }
+
+    .header .logo .logo-icon {
+      @apply w-7 h-7 flex-shrink-0;
+    }
+
+    .header .logo .logo-text {
+      @apply text-base whitespace-nowrap overflow-hidden text-ellipsis;
+    }
+
+    .header .ms-auto {
+      @apply flex-shrink-0;
+    }
+
+    /* Hide sidebar column from grid on mobile */
+    .sidebar-column {
+      @apply absolute w-0 h-0 p-0 m-0 overflow-visible pointer-events-none;
+    }
+
+    /* Ensure content column is full width on mobile */
+    .col-12.col-lg-10 {
+      @apply w-full max-w-full;
+    }
+
+    .sidebar {
+      @apply block fixed top-0 -left-full w-[280px] h-screen bg-gray-900 z-[1050] transition-all duration-300 overflow-y-auto p-4 shadow-lg border-r border-gray-800 pointer-events-auto;
+    }
+
+    .sidebar.mobile-menu-open {
+      @apply left-0;
+    }
+
+    .sidebar .nav {
+      @apply mt-0;
+    }
+
+    .sidebar .nav-item a {
+      @apply px-4 py-3 text-base;
+    }
+
+    /* Overlay when mobile menu is open */
+    .sidebar.mobile-menu-open::before {
+      @apply content-[''] fixed top-0 left-[280px] w-[calc(100vw-280px)] h-screen bg-black/50 -z-10;
+    }
+
+    /* Make cards mobile-friendly */
+    .card {
+      @apply mb-4 w-full max-w-full overflow-hidden;
+    }
+
+    .card .card-header {
+      @apply p-3 min-h-0 flex-wrap w-full;
+    }
+
+    .card .card-header .btn-group {
+      @apply mt-2 w-full;
+    }
+
+    .card .card-header .btn-group .btn {
+      @apply flex-1 text-sm px-2 py-1.5;
+    }
+
+    .card .card-header .form-control-with-icon {
+      @apply w-full max-w-full;
+    }
+
+    .card .card-body {
+      @apply p-3;
+    }
+
+    .table {
+      @apply text-sm overflow-x-auto block;
+    }
+
+    .table th,
+    .table td {
+      @apply px-2 py-1.5;
+    }
+  }
+
+  @media (max-width: 575.98px) {
+    .container {
+      @apply px-2;
+    }
+
+    /* Smaller heading on mobile */
+    .h5-mobile {
+      @apply text-lg;
+    }
+
+    .header {
+      @apply px-0;
+    }
+
+    .header .mobile-menu-toggle {
+      @apply p-1.5 mr-2;
+    }
+
+    .header .logo .logo-icon {
+      @apply w-6 h-6;
+    }
+
+    .header .logo .logo-text {
+      @apply text-sm;
+    }
+
+    .header .btn {
+      @apply px-2 py-1.5;
+    }
+
+    .header .ms-auto .btn {
+      @apply px-2 py-1.5;
+    }
+
+    .header .ms-auto .btn .icon {
+      @apply w-4 h-4;
+    }
+
+    .sidebar {
+      @apply w-60;
+    }
+
+    .sidebar.mobile-menu-open::before {
+      @apply left-60 w-[calc(100vw-240px)];
+    }
+
+    .card .card-header {
+      @apply p-2;
+    }
+
+    .card .card-header h5 {
+      @apply text-base;
+    }
+
+    .card .card-body {
+      @apply p-2;
+    }
+
+    .table {
+      @apply text-[13px];
+    }
+
+    .table th,
+    .table td {
+      @apply px-2 py-1.5;
+    }
+  }
+
+  /* Desktop styles */
+  @media (min-width: 992px) {
+    .sidebar-column {
+      @apply relative w-auto h-auto p-0 m-0 pointer-events-auto;
+    }
+
+    .sidebar {
+      @apply relative left-0 w-auto h-auto shadow-none border-r-0 p-0;
+    }
+  }
+}
+
+/* Loading spinner animation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 2s linear infinite;
+}
+
+/* Additional custom styles from base.scss that need to be preserved */
+[v-cloak] {
+  display: none;
+}
+
