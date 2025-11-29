@@ -181,7 +181,7 @@
             </tbody>
         </table>
 
-        <div v-if="ready && jobs.length" class="p-3 d-flex justify-content-between border-top">
+        <div v-if="ready && jobs.length" class="p-3 flex justify-between border-t">
             <button @click="previous" class="btn btn-secondary btn-sm" :disabled="page==1">Previous</button>
             <button @click="next" class="btn btn-secondary btn-sm" :disabled="page>=totalPages">Next</button>
         </div>
