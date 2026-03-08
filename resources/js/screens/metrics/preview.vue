@@ -6,10 +6,6 @@
             LineChart
         },
 
-
-        /**
-         * The component's data.
-         */
         data() {
             return {
                 ready: false,
@@ -18,21 +14,12 @@
             };
         },
 
-
-        /**
-         * Prepare the component.
-         */
         mounted() {
             document.title = "Horizon - Metrics";
-
             this.loadMetric();
         },
 
-
         methods: {
-            /**
-             * Load the metric.
-             */
             loadMetric() {
                 this.ready = false;
 
@@ -50,10 +37,6 @@
                     });
             },
 
-
-            /**
-             * Prepare the response data for charts.
-             */
             prepareData(data) {
                 return Object.values(this.groupBy(data.map(value => ({
                     ...value,
@@ -65,10 +48,6 @@
                 })))
             },
 
-
-            /**
-             * Build the given chart data.
-             */
             buildChartData(data, attribute, label) {
                 return {
                     labels: data.map(entry => entry.time),
@@ -92,46 +71,42 @@
 
 <template>
     <div>
-        <div class="card overflow-hidden">
-            <div class="card-header d-flex align-items-center justify-content-between">
-                <h2 class="h6 m-0">Throughput - {{$route.params.slug}}</h2>
+        <div class="bg-white dark:bg-gray-800 rounded-md shadow-sm overflow-hidden">
+            <div class="flex items-center justify-between px-5 py-3 min-h-[60px] border-b border-gray-100 dark:border-gray-700">
+                <h2 class="text-sm font-semibold m-0">Throughput - {{$route.params.slug}}</h2>
             </div>
 
-            <div v-if="!ready" class="d-flex align-items-center justify-content-center card-bg-secondary p-5 bottom-radius">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="icon spin me-2 fill-text-color">
+            <div v-if="!ready" class="flex items-center justify-center bg-gray-50 dark:bg-gray-900 p-12">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="w-4 h-4 spin mr-2 fill-gray-900 dark:fill-gray-100">
                     <path d="M12 10a2 2 0 0 1-3.41 1.41A2 2 0 0 1 10 8V0a9.97 9.97 0 0 1 10 10h-8zm7.9 1.41A10 10 0 1 1 8.59.1v2.03a8 8 0 1 0 9.29 9.29h2.02zm-4.07 0a6 6 0 1 1-7.25-7.25v2.1a3.99 3.99 0 0 0-1.4 6.57 4 4 0 0 0 6.56-1.42h2.1z"></path>
                 </svg>
-
                 <span>Loading...</span>
             </div>
 
-            <div class="card-body card-bg-secondary" v-if="ready">
-                <p class="text-center m-0 p-5" v-if="ready && !rawData.length">
+            <div class="p-5 bg-gray-50 dark:bg-gray-900" v-if="ready">
+                <p class="text-center m-0 p-5 text-gray-500 dark:text-gray-400" v-if="ready && !rawData.length">
                     Not Enough Data
                 </p>
-
                 <line-chart v-if="ready && rawData.length" :data="metric.throughPutChart"/>
             </div>
         </div>
 
-        <div class="card overflow-hidden mt-4">
-            <div class="card-header d-flex align-items-center justify-content-between">
-                <h2 class="h6 m-0">Runtime - {{$route.params.slug}}</h2>
+        <div class="bg-white dark:bg-gray-800 rounded-md shadow-sm overflow-hidden mt-4">
+            <div class="flex items-center justify-between px-5 py-3 min-h-[60px] border-b border-gray-100 dark:border-gray-700">
+                <h2 class="text-sm font-semibold m-0">Runtime - {{$route.params.slug}}</h2>
             </div>
 
-            <div v-if="!ready" class="d-flex align-items-center justify-content-center card-bg-secondary p-5 bottom-radius">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="icon spin me-2 fill-text-color">
+            <div v-if="!ready" class="flex items-center justify-center bg-gray-50 dark:bg-gray-900 p-12">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="w-4 h-4 spin mr-2 fill-gray-900 dark:fill-gray-100">
                     <path d="M12 10a2 2 0 0 1-3.41 1.41A2 2 0 0 1 10 8V0a9.97 9.97 0 0 1 10 10h-8zm7.9 1.41A10 10 0 1 1 8.59.1v2.03a8 8 0 1 0 9.29 9.29h2.02zm-4.07 0a6 6 0 1 1-7.25-7.25v2.1a3.99 3.99 0 0 0-1.4 6.57 4 4 0 0 0 6.56-1.42h2.1z"></path>
                 </svg>
-
                 <span>Loading...</span>
             </div>
 
-            <div class="card-body card-bg-secondary" v-if="ready">
-                <p class="text-center m-0 p-5" v-if="ready && !rawData.length">
+            <div class="p-5 bg-gray-50 dark:bg-gray-900" v-if="ready">
+                <p class="text-center m-0 p-5 text-gray-500 dark:text-gray-400" v-if="ready && !rawData.length">
                     Not Enough Data
                 </p>
-
                 <line-chart v-if="ready && rawData.length" :data="metric.runTimeChart"/>
             </div>
         </div>
