@@ -1,36 +1,35 @@
 <template>
-    <tr>
-        <td>
-            <router-link :title="job.name" :to="{ name: 'job-preview', params: { jobId: job.id, type: $route.params.type }}">
+    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 border-t border-gray-200 dark:border-gray-700">
+        <td class="px-5 py-3 align-middle">
+            <router-link :title="job.name" :to="{ name: 'job-preview', params: { jobId: job.id, type: $route.params.type }}" class="text-violet-600 dark:text-violet-400 hover:underline">
                 {{ jobBaseName(job.name) }}
             </router-link>
 
-            <small class="ms-1 badge bg-secondary badge-sm"
+            <span class="ml-1 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-gray-200 dark:bg-gray-300 text-gray-600 dark:text-gray-700"
                 :title="`Delayed for ${delayed}`"
                 v-if="delayed && (job.status == 'reserved' || job.status == 'pending')">
                 Delayed
-            </small>
+            </span>
 
             <br>
 
-            <small class="text-muted">
+            <small class="text-gray-500 dark:text-gray-400">
                 Queue: {{job.queue}}
-
-                <span v-if="job.payload.tags && job.payload.tags.length" class="text-break">
-                    | Tags: {{ job.payload.tags && job.payload.tags.length ? job.payload.tags.slice(0,3).join(', ') : '' }}<span class="text-secondary" v-if="job.payload.tags.length > 3"> +{{ job.payload.tags.length - 3 }} more</span>
+                <span v-if="job.payload.tags && job.payload.tags.length" class="break-all">
+                    | Tags: {{ job.payload.tags && job.payload.tags.length ? job.payload.tags.slice(0,3).join(', ') : '' }}<span class="text-gray-500 dark:text-gray-400" v-if="job.payload.tags.length > 3"> +{{ job.payload.tags.length - 3 }} more</span>
                 </span>
             </small>
         </td>
 
-        <td class="table-fit text-muted">
+        <td class="px-5 py-3 align-middle w-px whitespace-nowrap text-gray-500 dark:text-gray-400 text-sm">
             {{ readableTimestamp(job.payload.pushedAt) }}
         </td>
 
-        <td v-if="$route.params.type=='completed' || $route.params.type=='silenced'" class="table-fit text-muted">
+        <td v-if="$route.params.type=='completed' || $route.params.type=='silenced'" class="px-5 py-3 align-middle w-px whitespace-nowrap text-gray-500 dark:text-gray-400 text-sm">
             {{ readableTimestamp(job.completed_at) }}
         </td>
 
-        <td v-if="$route.params.type=='completed' || $route.params.type=='silenced'" class="table-fit text-end text-muted">
+        <td v-if="$route.params.type=='completed' || $route.params.type=='silenced'" class="px-5 py-3 align-middle w-px whitespace-nowrap text-right text-gray-500 dark:text-gray-400 text-sm">
             <span>{{ job.completed_at ? (job.completed_at - job.reserved_at).toFixed(2)+'s' : '-' }}</span>
         </td>
     </tr>
